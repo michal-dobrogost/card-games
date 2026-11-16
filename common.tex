@@ -1,6 +1,9 @@
 % common.tex -- everything shared by a4.tex and letter.tex.
 % Defines the packages, fonts, suit symbols, the two card faces (\sideA = Rules,
-% \sideB = Scoring), the 4-up layout, and \minibridgecards which typesets both pages.
+% \sideB = Scoring), the 4-up and 1-up layouts, and \minibridgerules which typesets
+% both pages. Define \oneupmode before \input-ing the paper file to get the 1-up
+% layout (one card per page, the 4-up cell scaled 2x), e.g.
+%   pdflatex -jobname=minibridge-rules-1up '\def\oneupmode{}\input{letter}'
 %
 % It expects the including file to have already loaded \documentclass and geometry
 % (zero margins), because the paper size is the only thing that differs.
@@ -92,8 +95,8 @@
         11 \\
         10 \\
         9
-      \end{tabular}}
-      & 300 points \\
+      \end{tabular}} &
+      300 points \\
     \hline
     %Part-score & \Club{}, \Diamondsuit{}, \Heart{}, \Spade{} or NT& 7 & 50 points \\
     %Part-score & --- & 7 & 50 points \\
@@ -170,9 +173,21 @@
       (current page.west) -- (current page.east);
   \end{tikzpicture}}
 
-% Page 1 = four copies of side A (Rules), page 2 = four copies of side B (Scoring).
-\newcommand{\minibridgerules}{%
-  \fourup{\sideA}
-  \newpage
-  \fourup{\sideB}
-}
+% One cell (laid out exactly as in the 4-up version) scaled 2x to fill the page.
+\newcommand{\oneup}[1]{%
+  \noindent\vbox to \paperheight{\offinterlineskip\scalebox{2}{\cell{#1}}\vss}}
+
+% Page 1 = side A (Rules), page 2 = side B (Scoring); four copies each in 4-up mode.
+\ifdefined\oneupmode
+  \newcommand{\minibridgerules}{%
+    \oneup{\sideA}
+    \newpage
+    \oneup{\sideB}
+  }
+\else
+  \newcommand{\minibridgerules}{%
+    \fourup{\sideA}
+    \newpage
+    \fourup{\sideB}
+  }
+\fi
