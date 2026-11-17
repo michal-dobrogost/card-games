@@ -9,7 +9,7 @@
 % (zero margins), because the paper size is the only thing that differs.
 %
 % Print double-sided (flip on LONG edge) at 100% / "Actual size", then cut along the
-% dashed centre lines. All four cells on a page are identical, so left/right mirroring
+% dashed centre lines (printed on the front page only). All four cells on a page are identical, so left/right mirroring
 % is not an issue.
 
 \usepackage[scaled]{helvet}
@@ -170,7 +170,11 @@
 \newcommand{\cellrow}[1]{\hbox to \paperwidth{\cell{#1}\cell{#1}}}
 
 \newcommand{\fourup}[1]{%
-  \noindent\vbox to \paperheight{\offinterlineskip\cellrow{#1}\cellrow{#1}}%
+  \noindent\vbox to \paperheight{\offinterlineskip\cellrow{#1}\cellrow{#1}}}
+
+% Dashed cut lines through the page centre; drawn on the front page only, so the
+% back side prints clean. Must follow \fourup in the same paragraph.
+\newcommand{\cutlines}{%
   \begin{tikzpicture}[remember picture,overlay]
     \draw[gray!60,dash pattern=on 3pt off 3pt,thin]
       (current page.north) -- (current page.south);
@@ -191,7 +195,7 @@
   }
 \else
   \newcommand{\minibridgerules}{%
-    \fourup{\sideA}
+    \fourup{\sideA}\cutlines
     \newpage
     \fourup{\sideB}
   }
