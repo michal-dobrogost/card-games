@@ -1,0 +1,156 @@
+Glossary
+--------
+Counting Top-winners:
+- Sequence of highest cards across declarer and dummy (A,K,Q,...).
+- Capped by the longer suit count between the two hands.
+- Top-winner count is calculated across all suits.
+
+Entry - A top-winner that allows us to transfer play into a hand.
+
+Blocked - When winning high cards are stuck in one hand because other hand can't be reached.
+
+Stopper - A top-winner that allow us to win back the lead.
+
+Ruffing - winning a trick with a trump
+
+Over-ruff - when one ruff is with a higher trump beating another ruff
+
+Void - hand with zero cards of a suit
+Singleton - hand with one card of a suit
+Doubleton - hand with two cards of a suit
+
+Drawing trumps - playing trumps to drain opponent of ruffing opportunities
+
+Honours - A,K,Q,J,10
+
+Sequence headed by honour - eg. 2 sequence: K,Q,X (where X is not an honour)
+
+Singleton - a suit with a single card
+
+Establishing a suit - playing until opponents run out of cards higher than yours in that suit.
+
+Planning play
+-------------
+1) Count top-winners
+2) Find extra tricks: promoting, establishing
+3) What could go wrong?
+4) Make plan
+
+Promoting:
+- A hand like K,Q,J does not have top-winners.
+- Play these cards to "knock out" the A and promote these into winners.
+
+Establishing a suit - Drawing out opponent's cards in a suit so they don't have any cards left.
+
+Finessing:
+- With A,Q in one hand lead in a lower card from the other hand first. If 2nd to play plays K, we play A, otherwise we play Q.
+- This only works 50% of the time (when 2nd to play has K not 4th to play).
+
+What can go wrong (NT):
+- Stranded top-winners | to help: unblock, ensure entries, overtake
+- Defenders establish long suite | to help: lose leads early so we can win them back.
+- Don't notice a card is promoted | to help: count cards left and note high cards not yet played.
+
+What can go wrong (Trump):
+- Opponents ruff our top winners | draw trumps before cashing winners
+- We run out of trumps to ruff | count ruff tricks needed and keep enough
+- Opponents over-ruff | ruff with the highest card we can afford
+
+Opening Leads
+-------------
+1) Set up tricks for our side
+2) Not giving away tricks unnecessarily
+3) Give information to partner
+
+No Trump:
+1) If have sequence of 3 headed by honour => lead top card
+   [information to partner: have card below but not above]
+2) Play from suit with most cards (if card count tied then most HCP) to establish suit
+   a) have honour => play 4th highest card
+      [low card may indicate 4 or more cards including honour]
+   b) no honour => play 2nd highest
+      [high non-honour card may indicate poor suit with no honour]
+
+Suit Contract (w/ trumps):
+1) If have sequence of 2 headed by honour => lead top card
+2) Suit headed by honour (no ace!) => lead low (4th highest, or lowest from 3) card
+3) A singleton (poor lead if partner has low HCP, best when we have low HCP increasing HCP in partner)
+4) Doubleton => Highest card, next card at next opportunity indicates doubleton
+5) Suit no honour => 2nd highest (MUD => middle, up, down)
+
+Cardplay for defenders
+-----------------------
+second person to play in trick:
+1) "2nd hand low" - low card led, play low (saves high cards for later trick in suit, partner still has opportunity to play high)
+2) "cover honor with honor" - honour card led, beat with honour (promotes other cards, drains high cards from both opponnent hands)
+
+third person to play in trick:
+1) "third hand high" (wins or promotes)
+2) "Lowest card doing job" (eg. sometimes inspecting dummy shows that we can play lower card and get same result)
+
+Third, fourth to play in trick:
+1) "lowest of equal cards" - play lower of equal cards [tells partner: we don't have card below]
+
+Note partner's opening lead:
+[honour card promises card below]
+[low card (especially in NT) 4th highest in suit with honour]
+1) take time to workout what it may mean about the missing hands
+2) remember throughout play, further play helps us decide what it meant
+If need to find a suit to lead in new trick, suit previously led by partner is often a good choice.
+
+
+
+Split probabilities
+-------------------
+An odd number of cards is more likely to split evenly (eg. 3-2).
+An even number of cards is more likely to split oddly (eg. 3-1).
+
+6/5 split: 924/2048
+7/4 split: 660/2048
+8/3 split: 330/2048
+9/2 split: 110/2048
+10/1 split: 22/2048
+11/0 split: 2/2048
+
+5/5 split: 252/1024
+6/4 split: 420/1024
+7/3 split: 240/1024
+8/2 split: 90/1024
+9/1 split: 20/1024
+10/0 split: 2/1024
+
+5/4 split: 252/512
+6/3 split: 168/512
+7/2 split: 72/512
+8/1 split: 18/512
+9/0 split: 2/512
+
+4/4 split: 70/256
+5/3 split: 112/256
+6/2 split: 56/256
+7/1 split: 16/256
+8/0 split: 2/256
+
+4/3 split: 70/128
+5/2 split: 42/128
+6/1 split: 14/128
+7/0 split: 2/128
+
+3/3 split: 20/64
+4/2 split: 30/64
+5/1 split: 12/64
+6/0 split: 2/64
+
+3/2 split: 20/32
+4/1 split: 10/32
+5/0 split: 2/32
+
+2/2 split: 6/16
+3/1 split: 8/16
+4/0 split: 2/16
+
+2/1 split: 6/8
+1/0 split: 2/8
+
+1/1 split: 2/4
+2/0 split: 2/4

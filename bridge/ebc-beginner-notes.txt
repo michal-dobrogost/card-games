@@ -1,0 +1,199 @@
+Suits: ♠ ♡ ♢ ♣
+
+Playing Hand
+------------
+Playing NT we count winners.
+Playing Trumps we count losers from long-trump hand.
+
+Signals hierarchy (1 ranks highest):
+1) attitude (applies on first round of a suit led by partner)
+   high => like, low => dislike
+2) count (applies on (a) opponent leads a suit (b) second round of a suit led by partner)
+   high, low => even, low high => odd
+3) lavinthal (only if attitude and count don't apply: (a) discarding (b) giving partner a ruff (c) when suit is dead (eg. last card in dummy)
+   high => lead higher ranking suit, low => lead lower ranking suit (ignore suit in play and trump suit)
+
+Play high from the short side first (eg. Declarer AKTxx Dummy Qxx, play x from declarer and win with Q first).
+- This unblocks the suit and allows us to keep playing in that suit (vs. forcing us to renter long side with a side entry).
+- This provides an opportunity to ruff.
+
+Lead through strength (ie. prefer stronger opponent in 2nd hand), up to weakness (weaker opponent in 4th hand).
+
+Lead weakness towards strength (764 across KQ3 start with 4).
+
+Finesse is any play that takes advantage of us playing after opponent.
+
+Sequence of equal cards (QJTxx):
+- lead the top of equal cards (Q): promotes the other cards, tells partner you may have lower cards (JT).
+- play the bottom of equal cards (T): tells partner you may have higher cards (QJ).
+
+If partner knows you have a card (eg. you opened with Q in QJ10x) and you only have J10x left in your hand, play the 10, it preserves knowledge for your partner (you still have the J).
+
+When finessing lead high. Your 10 may be equivalent to QJ in partner allowing him to play low allowing you to take the hand and lead another finesse again.
+
+Draw trump unless there's a reason not to.
+
+Never lead away from the ace: Axxx play x as it let's opponent cash K.
+
+When partner leads 4th card play high to promote their high cards.
+
+Keep cards in opponents long suits to beat small cards in late tricks.
+
+NT: Can delay taking taking tricks to create a void in opponent 1 which prevents entering opponent 2's hand with long suit.
+
+Fin: Finesse
+Eq: high from short side (with equivalent cards lead from from short hand first)
+W2S: lead from weakness towards strength
+
+West | East | Method | Play
+---------------------------------------------------
+AKx  | Qx   | Eq     | cash Q, low to K, cash A
+KQx  | xxx  | Fin    | low to Q, bus to east, low to K (A in south)
+AQJ  | xxx  | Fin    | low to Q/A, bus to east, low to J/A (A in south)
+Axx  | KJx  | Fin    | K to x/A, bus to east, J to x/A
+QJT  | Axx  | W2S    | Q to x/A, J to x/A, T to x/A
+
+
+Bidding
+-------
+HCP (high card points): A=4, K=3, Q=2, J=1
+LP (length points): 5-card-suit=1, 6-card-suit=2, ...
+DP (dummy / shortness points): void=5, singleton=3, doubleton=1
+TP (total points): HCP + LP (opening new suit), HCP + DP (raising partner's suit)
+
+25 points for game in NT or Major suit
+29 points (+Ace) for game in Minor suit
+
+Voids in hand:
+- NT: voids are bad - lost lead can mean many more lost tricks in void suit.
+- Trump: voids are good - opportunity to ruff.
+
+NT counts HCP only
+
+It becomes risky to bid after opponents bid 1NT because they have so much strength.
+
+Bidding: Opening
+----------------
+Pass: 0-13 TP (with exceptions)
+
+1NT: 15-17 HCP, balanced hand
+Balanced hand: no void, no singleton, at most 1 doubleton
+
+1 level suit bid: 13-21 TP
+a) longest 5+ card major, higher ranking on tie.
+b) otherwise longest 3+ card minor, higher ranking on tie (except 3-3 bid 1C).
+   - Opening 1C: 16% of time will have 3 clubs.
+   - Opening 1D: you will almost always have 4+ diamonds.
+
+Preempts (weak 2 bids: 2S,2H,2D): Not enough TP to open @ 1 level, 6 card suit with 2/3 or 3/5 top honours.
+- Typically 5-9/10 HCP
+
+2NT: 20-21 HCP, balanced hand
+
+2C (Artificial, forcing): 22+ TP or 9+ tricks in hand
+- Want to get to game with <6 TP in partner
+Artificial: says nothing about clubs
+
+
+Bidding: Responding to 1-level major bids
+-----------------------------------------
+Opening  5 cards  6 cards  7+ cards
+1♠ / 1♡  70%      25%      5%
+
+Pass: 0-5 TP (with exceptions) => 6+ TP must make a bid.
+
+Raising partner's major suit opening:
+a) 2S/2H (raise): 6-9 TP, 3+ trumps
+b) 3S/3H (jump-raise): 10-11 TP, 3+ trumps
+c) 4S/4H: Weak freak: 5+ trumps, singleton or void, 0-7 HCP
+   - Takes away bidding room from opponents
+   - Our failed contract likely to score better than allowing opponent's to find contract.
+   - Our weakness is likely our opponents strength (HCP, short suit).
+d) XY -> 4S/4H: 12-15 TP (Bid another best suit first (forcing), then go to game)
+   - Can't go straight to game contract (1 -> 4) because it means weak freak.
+   - Bidding one short of game is not forcing so that doesn't work.
+   - Bidding another suit gives bidding room for finding slam if possible and are forcing.
+
+Not raising partner's major suit opening:
+a) New Suit (forcing):
+   @ 1 level: 4+ cards, 6+ TP
+   @ 2 level: 4+ cards, 10+ TP (2H promises 5+ cards)
+b) 3NT (signoff): 13-15 HCP, doubleton in partner's suit (no fit), balanced hand
+c) 2NT (invitational): 11-12 HCP, doubleton in partner's suit (no fit), balanced hand
+   - Hoping partner has a little extra and can bid 3NT
+d) 1NT (invitational): a,b,c don't apply; 6-10 HCP, may not be balanced
+
+Bidding: Responding to 1-level minor bids
+-----------------------------------------
+Opening  3 cards  4 cards  5 cards  6 cards  7+ cards
+1♢       5%       40%      40%      15%      5%
+1♣       15%      25%      35%      15%      5%
+
+Pass: 0-5 TP (with exceptions) => 6+ TP must make a bid.
+
+Assuming partner bid 1♢ try to find a major fit:
+(a) 1♠/1♡: 6+ TP, 4+ cards in suit
+(b) 1♢ response to 1♣: 12+ TP, 4+ ♢ and longer than major suits (partner will then bid 4+ card major if they have one)
+All other bids deny 4 card major suit
+(c) 2♢ (raise): 6-9 TP, 4+ diamonds or 5+ clubs, preferably shaped hand
+(d) 3♢ (jump-raise, invitational): 10-11 TP, 4+ diamonds or 5+ clubs, preferably shaped hand
+(e) 3NT: 13-15 HCP, balanced hand
+(f) 2NT: 11-12 HCP, balanced hand
+(g) 1NT: 6-10 HCP, balanced hand
+(h) 2♣ response to 1♢: 10+ TP, 4+ cards
+
+Bidding: Responding to 1NT
+--------------------------
+Distribution of opening with 1NT bid: 4333 20%   4432 50%   5332 30%
+
+(a) 2♠/2♡/2♢ (signoff): 0-7 TP, 5+ card suit
+    "better play with trumps given my bad hand"
+(b) 3♠/3♡ (invite): 10+ TP, exactly 5 card major
+(c) 4♠/4♡ (signoff): 10+ TP, 6+ card major
+(d) 2♣ (stayman convention): 8+ TP, exactly 4 cards in a major
+    "What are your 4+ card majors" response (2♠/2♡ - indicates major, 2♢ - no 4+ card major)
+When none of the above apply (thus ~ balanced hand):
+(d) pass(signoff): 0-7 TP
+(e) 2NT (invite): 8-9 TP (good means have some length)
+(f) 3NT (signoff): 10-17 TP
+
+Opening Lead
+------------
+Against Suit Contracts, best leads:
+(1) AK: lead A, then potentially K depending on what you see in dummy etc
+(2a) Top of 2 honor sequence (K from KQxx)
+(2b) Singleton (x from x): you will get a ruff immediately
+(2c) Suit bid by partner
+Additional leads:
+(3) 4th best from a long suit with at least one honor (but not bare A)
+(4) Top of doubleton (Q from Qx): this is a weaker lead
+Bad leads (find a lead in a different suit instead):
+- lead A no K: confuses partner expecting you to have K, sets up oponnents K/Q.
+- lead in suit with bare ace (Axxx lead x) in suit contract: allows opponents to cash K.
+- lead unsupported honors (Kxx lead K)
+
+Against NT contracts, best leads:
+(1a) Top of honor sequence (Q from QJTxx): promotes and develops through length
+(1b) Suit bid by partner (Q from ♠Qx if partner bid ♠)
+(2) 4th best from long suit with at least one honor (5 from ♠KJ753 if ♠ is longest): hopefully partner has honor which promotes your honors.
+
+Giving up trick in led suit is OK in NT but avoid in suit contract.
+With ♠ AQ962 ♡ xx ♢	KQJ ♣ xxx:
+  against ♡ contract lead ♢K: avoid loosing trick.
+  against NT lead 4th best ♠6: declarer may have stopper which will set up your ♠s.
+
+
+Defending
+---------
+NT: primary objective is to setup cards in a long suit.
+
+NT: Try to knock out attacker's high cards in a suit to take all card in suit later.
+
+Questions
+---------
+Leading suit bid by partner - but doesn't bidding happen on suit length not strength?
+
+Glossary
+--------
+spot card: 9 or lower
+stopper: a high card that prevents opponent running down a suit (especially in NT).
