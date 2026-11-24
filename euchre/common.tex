@@ -12,15 +12,16 @@
 % dashed centre lines (printed on the front page only). All four cells on a page are
 % identical, so left/right mirroring is not an issue.
 %
-% Single-deck Bid Euchre (24 cards, 6 each). Bids of 1 to 6 with a trump suit or no
-% trump; bidding ends after 3 passes in a row; the dealer must bid at least 4 if no one
-% bids. After an auction ending in a 5 or 6 contract the maker may call salt (both
-% partnerships swap one card between partners), pepper (maker plays alone), or salt &
-% pepper (swap first, then play alone). See \sideB for the scoring.
+% Bid Euchre with a 28-card deck (A to 8), 7 cards each. One round of bidding: 1 to 7
+% tricks plus a trump suit, high (no trump, ace high) or low (no trump, 8 high); the
+% dealer must bid at least 4 if everyone passes. On a contract of 5, 6 or 7 the maker
+% may call salt (both partnerships swap one card between partners), pepper (maker plays
+% alone) or salt & pepper (swap first, then play alone). See \sideB for the scoring.
 
 \usepackage[scaled]{helvet}
 \usepackage[T1]{fontenc}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{pifont}
 \usepackage{enumitem}
@@ -38,7 +39,7 @@
 \newcommand{\bodysize}{\fontsize{9}{10.8}\selectfont}
 \newcommand{\titlesize}{\fontsize{19}{21}\selectfont}
 \newcommand{\gap}{\vspace{0.7\baselineskip}}
-\newcommand{\winscore}{30}      % points needed to win the game
+\newcommand{\winscore}{33}      % points needed to win the game
 % -------------------
 
 % table header cell split over two lines
@@ -66,33 +67,46 @@
 
 % ---------- SIDE A: RULES ----------
 \newcommand{\sideA}{%
-  \cardtitle{Bid Euchre Rules}
+  \cardtitle{Toronto Bid Euchre: Rules}
   {\raggedright\begin{enumerate}[leftmargin=1.5em,itemsep=0.5\baselineskip,topsep=0pt,parsep=0pt]
     \item Four players form two teams with partners sitting across from each other.
-      Use a 24-card deck ranked A, K, Q, J, 10, 9 in each suit.
-    \item Deal the cards, clockwise, starting left of dealer. Six cards each.
-    \item Bidding starts left of dealer and continues clockwise.
-      Each player passes or bids the number of tricks their side is to take (1--6) along with a trump suit or no trump (e.g.\ 1\Heart).
-      Each bid must be for more tricks than previously bid.
-      If no bids were announced, the dealer must bid at least 4 tricks.
-      Bidding ends when there are 3 consecutive passes after a bid.
-      The player who won the bidding is known as the maker.
+      Use a 28-card deck: A, K, Q, J, 10, 9, 8 in each suit.
+    \item Deal the cards, clockwise, starting left of dealer. Seven cards each.
+    \item Each player bids once, starting left of dealer.
+      Each player passes or bids a number of tricks their side is to take (1--7) plus a trump suit, high or low
+      (e.g.\ 4\Heart, 3~high, 5~low).
+      Each bid must be for more tricks than the previous bid.
+      If everyone else passes, the dealer must bid at least 4.
+      The highest bidder is known as the maker.
     \item
-      \emph{(Optional)} After bidding a 5- or 6-trick contract, the maker may call:\\
-      Salt --- partners on both teams exchange one card face down.\\
+      \emph{(Optional)} On a contract of 5, 6 or 7 tricks, the maker may call:\\
+      Salt --- each player passes one card face down to their partner.\\
       Pepper --- maker plays alone (partner sits out with hand face down).\\
       Salt \& pepper --- salt first, then pepper.
     \item
       Maker leads one card face up for the first trick; others follow clockwise.
-      \emph{You must follow the suit led.} If you can't, play a trump or any other card.
+      \emph{You must follow the suit led.} If you can't, play trump or any other card.
+      The highest trump wins the trick; otherwise the highest card of the suit led wins.
+      The winner leads to the next trick.
     \item
-      The highest trump wins the trick, otherwise the highest card of the suit led wins.
-      The four cards played are placed face down and the winner leads to the next trick.
-    \item
-      In the trump suit, the jack of trump (right bower) becomes highest, and the other jack of the same colour (left bower) becomes second highest.
-      E.g.\ with \Heart{} as trump the cards rank: J\Heart, J\Diamondsuit, A\Heart, K\Heart, Q\Heart, 10\Heart, 9\Heart.
-      \emph{The left bower is a trump, not a card of its own suit.}
-    \item For the next hand, the dealer is the next player clockwise.
+      Card ranking changes based on the winning bid (the contract).
+      In a trump contract the jack of trump (right bower) is highest, the other jack of the same colour (left bower) is second highest.
+      \\[0.3\baselineskip]
+      {\renewcommand{\arraystretch}{1.2}%
+      \begin{tabularx}{\linewidth}{|l|>{\raggedright\arraybackslash}X|}
+        \hline
+        Contract & Ranking, highest first \\
+        \hline
+        \stackhead{Trump suit (e.g.\ \Heart)} &
+          (E.g. J\Heart, J\Diamondsuit, A\Heart, K\Heart, Q\Heart, 10\Heart, 9\Heart, 8\Heart) \\
+        \hline
+        High (no trump) & A, K, Q, J, 10, 9, 8 \\
+        \hline
+        Low (no trump) & 8, 9, 10, J, Q, K, A \\
+        \hline
+      \end{tabularx}}\\[0.3\baselineskip]
+      \emph{The left bower (e.g. J\Diamondsuit) is a trump, not a card of its own suit.}
+    \item Tally score. For the next hand, dealer is the next player clockwise.
   \end{enumerate}}
 }
 
@@ -100,10 +114,11 @@
 \newcommand{\sideB}{%
   \raggedright
   \renewcommand{\gap}{\vspace{0.5\baselineskip}}% tighter than the rules side, so it all fits
-  \cardtitle{Bid Euchre Scoring}
+  \cardtitle{Toronto Bid Euchre: Score}
 
   \textbf{Makers}\gap
 
+  The maker and partner are the makers; the other side are the defenders.
   The contract is made if the makers win at least the number of tricks bid, otherwise it is set.
   Makers score points as follows:
   \gap
@@ -113,16 +128,16 @@
     \hline
     Contract & Made & Set (failed) \\
     \hline
-    Plain & +tricks won & \textminus{}tricks bid \\
-    Salted & +tricks won & \textminus{}tricks bid \textminus\ 4 \\
-    Peppered & +tricks won + 4 & \textminus{}tricks bid \textminus\ 4 \\
-    Salted \& peppered & +tricks won + 1 & \textminus{}tricks bid \textminus\ 8 \\
+    Plain & tricks won & \textminus{}tricks bid \\
+    Salted & tricks won \textminus\ 1 & \textminus{}tricks bid \textminus\ 1 \\
+    Peppered & tricks won + 4 & \textminus{}tricks bid \textminus\ 4 \\
+    Salted \& peppered & tricks won + 2 & \textminus{}tricks bid \textminus\ 8 \\
     \hline
   \end{tabular}\gap
 
   \textbf{Defenders}\gap
 
-  The defenders score +1 point for each trick they take, whether or not the contract is made.\gap
+  The defenders score 1 point for each trick they take, whether or not the contract is made.\gap
 
   \textbf{Examples}\gap
 
@@ -130,17 +145,19 @@
     \hline
     Contract & \stackhead{Tricks won\\by makers} & \multicolumn{2}{l|}{\stackhead{Makers\\score}} & \stackhead{Defenders\\score} \\
     \hline
-    Salted 5\Heart & 6 & +6 & & 0 \\
-    Peppered 5\Heart & 5 & +9 & \ =\ \phantom{\textminus}5 + 4 & +1 \\
-    Salted \& peppered 5\Heart & 4 & \textminus13 & \ =\ \textminus5 \textminus\ 8 & +2 \\
-    Plain 3\Heart & 3 & +3 & & +3 \\
+    Plain 6 low                & 6 & 6            &                                          & 1 \\
+    Salted 5\Heart             & 6 & 5            & \ =\ \phantom{\textminus}6 \textminus\ 1 & 1 \\
+    Peppered 5\Heart           & 5 & 9            & \ =\ \phantom{\textminus}5 + 4           & 2 \\
+    Salted \& peppered 5\Heart & 4 & \textminus13 & \ =\ \textminus5 \textminus\ 8           & 3 \\
     \hline
   \end{tabular}\gap
 
   \textbf{Winning}\gap
 
-  The first side to reach \winscore{} points wins (about 10--13 hands, 30--40 minutes). Scores can go below zero.\gap
+  %The first side to reach \winscore{} points wins (about 10 hands). If both teams achieve 33 points on the same hand, the higher score count wins (if still tied then makers on last deal win). Scores can go below zero.
+  First side to \winscore{} wins (about 10 hands); if both get there on the same hand: the higher score wins, makers take ties. Scores can go below zero.
 
+  \gap
   \vfill{\fontsize{5.5}{6.5}\selectfont\noindent\expandafter\url\expandafter{\footurl}}}
 
 % ---------- layout ----------
