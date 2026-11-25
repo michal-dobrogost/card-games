@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rm -f euchre-rules*.aux euchre-rules*.log
+rm -f toronto-bid-euchre-rules*.aux toronto-bid-euchre-rules*.log

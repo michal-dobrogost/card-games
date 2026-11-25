@@ -3,7 +3,7 @@
 % \sideB = Scoring), the 4-up and 1-up layouts, and \euchrerules which typesets
 % both pages. Define \oneupmode before \input-ing the paper file to get the 1-up
 % layout (one card per page, the 4-up cell scaled 2x), e.g.
-%   pdflatex -jobname=euchre-rules-1up '\def\oneupmode{}\input{letter}'
+%   pdflatex -jobname=toronto-bid-euchre-rules-1up '\def\oneupmode{}\input{letter}'
 %
 % It expects the including file to have already loaded \documentclass and geometry
 % (zero margins), because the paper size is the only thing that differs.
@@ -34,7 +34,7 @@
 \hyphenpenalty=10000 \exhyphenpenalty=10000 \tolerance=2000 \emergencystretch=2em
 
 % ---- CONFIGURE ----
-\newcommand{\footurl}{https://github.com/michal-dobrogost/minibridge/tree/main/euchre}  % footnote on the scoring card
+{\catcode`\#=12 \gdef\footurl{https://github.com/michal-dobrogost/irl-games#toronto-bid-euchre}}  % footnote on the scoring card
 \newlength{\inset}\setlength{\inset}{0.25in}   % white margin inside each cell
 \newcommand{\bodysize}{\fontsize{9}{10.8}\selectfont}
 \newcommand{\titlesize}{\fontsize{19}{21}\selectfont}
