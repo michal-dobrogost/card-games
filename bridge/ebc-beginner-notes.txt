@@ -129,17 +129,17 @@ Opening  3 cards  4 cards  5 cards  6 cards  7+ cards
 1♢       5%       40%      40%      15%      5%
 1♣       15%      25%      35%      15%      5%
 
-Pass: 0-5 TP (with exceptions) => 6+ TP must make a bid.
+Pass: 0-5 TP => 6+ TP must make a bid.
 
-Assuming partner bid 1♢ try to find a major fit:
+Assuming partner bid 1♢ try to find a major fit (priority order):
 (a) 1♠/1♡: 6+ TP, 4+ cards in suit
 (b) 1♢ response to 1♣: 12+ TP, 4+ ♢ and longer than major suits (partner will then bid 4+ card major if they have one)
 All other bids deny 4 card major suit
-(c) 2♢ (raise): 6-9 TP, 4+ diamonds or 5+ clubs, preferably shaped hand
-(d) 3♢ (jump-raise, invitational): 10-11 TP, 4+ diamonds or 5+ clubs, preferably shaped hand
+(c) 1NT: 6-10 HCP, balanced hand
+(d) 2NT: 11-12 HCP, balanced hand
 (e) 3NT: 13-15 HCP, balanced hand
-(f) 2NT: 11-12 HCP, balanced hand
-(g) 1NT: 6-10 HCP, balanced hand
+(f) 2♢ (raise): 6-9 TP, 4+ diamonds or 5+ clubs, preferably shaped hand
+(g) 3♢ (jump-raise, invitational): 10-11 TP, 4+ diamonds or 5+ clubs, preferably shaped hand
 (h) 2♣ response to 1♢: 10+ TP, 4+ cards
 
 Bidding: Responding to 1NT
