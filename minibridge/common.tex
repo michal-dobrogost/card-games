@@ -28,7 +28,7 @@
 \hyphenpenalty=10000 \exhyphenpenalty=10000 \tolerance=2000 \emergencystretch=2em
 
 % ---- CONFIGURE ----
-{\catcode`\#=12 \gdef\footurl{https://github.com/michal-dobrogost/irl-games#minibridge}}  % footnote on the scoring card
+{\catcode`\#=12 \gdef\footurl{https://github.com/michal-dobrogost/irl-games#minibridge}}  % footer URL on both card sides
 \newlength{\inset}\setlength{\inset}{0.25in}   % white margin inside each cell
 \newcommand{\bodysize}{\fontsize{9}{10.8}\selectfont}
 \newcommand{\titlesize}{\fontsize{19}{21}\selectfont}
@@ -55,20 +55,19 @@
 \setlength{\cellw}{0.5\paperwidth}
 \setlength{\cellh}{0.5\paperheight}
 
+% small URL pinned to the bottom of each card side
+\newcommand{\cardfooter}{\gap\vfill{\fontsize{5.5}{6.5}\selectfont\noindent\expandafter\url\expandafter{\footurl}}}
+
 % ---------- SIDE B: SCORING ----------
 \newcommand{\sideB}{%
   \raggedright
   \cardtitle{MiniBridge Scoring}
 
-  Play continues to a predetermined goal such as 1000 points or 8 deals.\gap
+  Play to an agreed upon goal such as 1000 points or 6 deals.\gap
 
   \textbf{Contracts made}\gap
 
-  Bonuses and points are awarded to the declaring side only if they win the contract's target number of tricks, or more.\gap
-
-  No points are won for the first 6 tricks (the book).
-  Every trick won thereafter, including any beyond the contract's target, scores points according to the
-  contract as follows:\gap
+  If the declaring side reaches its target, it scores for every trick after the first 6 (the book), including any beyond the contract's level (overtricks):\gap
 
   \begin{tabular}{@{}l@{}l@{}}
     \makebox[0.4\linewidth][l]{No trump} & 40 points (trick 7), 30 points (tricks 8+)\\
@@ -76,14 +75,14 @@
     \makebox[0.4\linewidth][l]{Minor suit (\Diamondsuit\ or \Club)} & 20 points
   \end{tabular}\gap
 
-  A bonus is awarded based on the level of the contract announced:\gap
+  A Bonus is awarded based on the contract announced:\gap
 
-  \renewcommand{\arraystretch}{1.3}
-  \begin{tabular}{|l|l|l|l|l|}
+  {\renewcommand{\arraystretch}{1.3}\setlength{\tabcolsep}{4.5pt}% narrower padding so the table fits the card
+  \begin{tabular}{|l|l|l|>{\color{gray}}l|l|}
     \hline
     Type & Trump suit & Level & Tricks target & Bonus \\
     \hline
-    Part-score & any & 1 & 7 & 50 points \\
+    Part-score & any & \textless{} game & \textless{} game & 50 points \\
     \hline
     Game &
       {\renewcommand{\arraystretch}{1.0}\begin{tabular}[t]{@{}l@{}}
@@ -92,74 +91,72 @@
         Minor (\Diamondsuit{} or \Club)
       \end{tabular}} &
       {\renewcommand{\arraystretch}{1.0}\begin{tabular}[t]{@{}l@{}}
-        3 \\
-        4 \\
-        5
+        3+ \\
+        4+ \\
+        5+
       \end{tabular}} &
       {\renewcommand{\arraystretch}{1.0}\begin{tabular}[t]{@{}l@{}}
-        9 \\
-        10 \\
-        11
+        9+ \\
+        10+ \\
+        11+
       \end{tabular}} &
       300 points \\
     \hline
-  \end{tabular}
-  \gap
+    Small slam & any & 6 & 12 & 800 points \\
+    \hline
+    Grand slam & any & 7 & 13 & 1300 points \\
+    \hline
+  \end{tabular}}\gap
 
   \textbf{Contracts defeated}\gap
 
-  If a contract is defeated (i.e., the target number of tricks is not reached),
-  the defending side scores points instead of the declaring side. The
-  defenders score for every trick short of the target:
+  If the declaring side falls short, the defenders score for each trick short of the target:\gap
 
-  \gap
   \begin{tabular}{@{}l@{}l@{}}
     \makebox[0.4\linewidth][l]{Each undertrick} & 50 points\\
   \end{tabular}
-  \vfill{\fontsize{5.5}{6.5}\selectfont\noindent\expandafter\url\expandafter{\footurl}}}
+
+  \cardfooter
+}
 
 % ---------- SIDE A: RULES ----------
 \newcommand{\sideA}{%
   \cardtitle{MiniBridge Rules}
   {\raggedright\begin{enumerate}[leftmargin=1.5em,itemsep=0.5\baselineskip,topsep=0pt,parsep=0pt]
-    \item Shuffle and deal the cards, 13 each to the 4 players.
-    \item Sum and announce high-card points (HCP), clockwise, dealer starts:
+    \item \textbf{Deal} a 52-card deck to four players (13 cards each). Two teams of two. Partners sit opposite.
+    \item \textbf{Sum} and announce high-card points (HCP), clockwise, dealer first:
       \\[0.3\baselineskip]
-      \hspace*{0.4em}Ace = 4\quad King = 3\quad Queen = 2\quad Jack = 1
+      \hspace*{0.4em}\textbf{A}~=~4\qquad\textbf{K}~=~3\qquad\textbf{Q}~=~2\qquad\textbf{J}~=~1
     \item
-      Place declarer's partner's hand face up on the table as dummy.\\
-      Partnership --- A team of two players sitting across from each other. \\
-      Declaring side --- The partnership with the higher combined HCP. \\
-      Declarer --- Partner with the higher HCP or first to announce if equal.
-    \item Declarer announces the contract --- a level and choice of trump suit or no trump.
-      The level is the number of tricks needed after the first 6, e.g.\ a contract of 4\Heart{} needs 10 tricks.
-      Consider a trump contract if the declaring side has 8+ cards in a suit (a fit).
-      The following table shows the level you may expect to make:
+      \textbf{Declarer:} the side with more combined HCP declares.
+      The partner with more HCP is declarer; if tied, whoever announced first.
+      Declarer's partner lays their hand face up as dummy.
+    \item \textbf{Contract:} declarer names a level and a trump suit, or no trump.
+      The level is the number of tricks needed beyond 6 (e.g.\ 4\Heart{} = 10 tricks).
+      Consider trumps with 8+ cards in a suit across both hands (a fit).
       \\[0.3\baselineskip]
-      \begin{tabular}{|l|llll|}
+      \begin{tabular}[c]{|l|llll|}
         \hline
         \multirow{2}{*}{Contract suit} & \multicolumn{4}{c|}{Combined HCP} \\
-        %\cline{2-5}
         & 21+ & 23+ & 25+ & 27+ \\
         \hline
         No trump                          & 1 & 2 & \textbf{3} & -- \\
         Major (\Spade{} or \Heart{})      & 2 & 3 & \textbf{4} & -- \\
         Minor (\Diamondsuit{} or \Club{}) & 2 & 3 & 4 & \textbf{5} \\
         \hline
-      \end{tabular}
+      \end{tabular}\quad
+      \parbox[c]{8em}{\raggedright level you may expect to make}
     \item
-      The opening lead is made by the player left of declarer; others follow clockwise.
-      \emph{You must follow the suit led.}
-      If you can't, play a trump or any other card.
-      Declarer plays from their own hand and the dummy.
+      \textbf{Play:} the player left of declarer leads one card face up; others follow clockwise.
+      \emph{You must follow suit if you can}; otherwise play a trump or any other card.
+      Declarer plays both their own hand and dummy.
     \item
-      The highest trump wins the trick, otherwise the highest card of the suit led.
-      Cards are ranked: A, K, Q, J, 10 ... 2.
-      After each trick, the four cards are turned face down.
-      The winner leads to the next trick.
-    \item At the end of play, the tricks won are counted and scored.
-    \item For the next hand, the dealer is the next player clockwise.
+      \textbf{Tricks} are won by the highest trump, else the highest card of the suit led (A, K, Q, J, 10 ... 2).
+      The 4 cards played are turned face down and the winner leads the next trick.
+    \item \textbf{Score} the tricks won. Deal passes clockwise.
   \end{enumerate}}
+
+  \cardfooter
 }
 
 % ---------- layout ----------
