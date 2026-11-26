@@ -16,5 +16,18 @@ Toronto Bid Euchre is a new 4-player euchre variant targeting simple bidding and
 - 4-up: [letter](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/toronto-bid-euchre/toronto-bid-euchre-rules.pdf) or [a4](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/toronto-bid-euchre/toronto-bid-euchre-rules-a4.pdf)
 - 1-up: [letter](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/toronto-bid-euchre/toronto-bid-euchre-rules-1up.pdf) or [a4](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/toronto-bid-euchre/toronto-bid-euchre-rules-1up-a4.pdf)
 
+## Thousand
+Thousand (1000) is a three-player trick-taking game from Eastern Europe. Players bid for the right to take the kitty, and declaring a marriage (a K and Q of the same suit) scores points and sets the trump suit. First to 1000 points wins.
+
+Thousand and Makao are printed on the two sides of the same card:
+
+- 4-up: [letter](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/thousand/thousand-makao-rules.pdf) or [a4](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/thousand/thousand-makao-rules-a4.pdf)
+- 1-up: [letter](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/thousand/thousand-makao-rules-1up.pdf) or [a4](https://raw.githubusercontent.com/michal-dobrogost/irl-games/main/thousand/thousand-makao-rules-1up-a4.pdf)
+
+## Makao
+Makao is a shedding game for 2+ players from Eastern Europe, similar to Crazy Eights. Action cards make the next player draw, skip a turn or play a demanded rank, and most can be deflected onto the player after them. First to empty their hand wins.
+
+Makao is printed on the back of the Thousand card; see the [Thousand](#thousand) section for the PDFs.
+
 ## Building
 Each directory has its own scripts: build the PDFs with `./build.sh` and remove LaTeX intermediate files with `./clean.sh`.

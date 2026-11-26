@@ -1,9 +1,9 @@
 % common.tex -- everything shared by a4.tex and letter.tex.
-% Defines the packages, fonts, suit symbols, the two card faces (\sideA = Rules,
-% \sideB = Scoring), the 4-up and 1-up layouts, and \thousandrules which typesets
+% Defines the packages, fonts, suit symbols, the two card faces (\sideA = Thousand,
+% \sideB = Makao), the 4-up and 1-up layouts, and \cardrules which typesets
 % both pages. Define \oneupmode before \input-ing the paper file to get the 1-up
 % layout (one card per page, the 4-up cell scaled 2x), e.g.
-%   pdflatex -jobname=thousand-rules-1up '\def\oneupmode{}\input{letter}'
+%   pdflatex -jobname=thousand-makao-rules-1up '\def\oneupmode{}\input{letter}'
 %
 % It expects the including file to have already loaded \documentclass and geometry
 % (zero margins), because the paper size is the only thing that differs.
@@ -12,11 +12,9 @@
 % dashed centre lines (printed on the front page only). All four cells on a page are
 % identical, so left/right mirroring is not an issue.
 %
-% Bid Euchre with a 28-card deck (A to 8), 7 cards each. One round of bidding: 1 to 7
-% tricks plus a trump suit, high (no trump, ace high) or low (no trump, 8 high); the
-% dealer must bid at least 4 if everyone passes. On a contract of 5, 6 or 7 the maker
-% may call salt (both partnerships swap one card between partners), pepper (maker plays
-% alone) or salt & pepper (swap first, then play alone). See \sideB for the scoring.
+% Two games, one per side: Thousand (3 players, 24-card deck, bidding and marriages
+% that set trump; first to 1000) and Makao (2+ players, a shedding game like Crazy
+% Eights with action cards that can be deflected).
 
 \usepackage[scaled]{helvet}
 \usepackage[T1]{fontenc}
@@ -35,7 +33,10 @@
 \hyphenpenalty=10000 \exhyphenpenalty=10000 \tolerance=2000 \emergencystretch=2em
 
 % ---- CONFIGURE ----
-{\catcode`\#=12 \gdef\footurl{https://github.com/michal-dobrogost/irl-games#thousand}}  % footnote on the scoring card
+% footer URLs, one per card side
+{\catcode`\#=12
+ \gdef\footurlA{https://github.com/michal-dobrogost/irl-games#thousand}
+ \gdef\footurlB{https://github.com/michal-dobrogost/irl-games#makao}}
 \newlength{\inset}\setlength{\inset}{0.25in}   % white margin inside each cell
 \newcommand{\bodysize}{\fontsize{9}{10.8}\selectfont}
 \newcommand{\titlesize}{\fontsize{19}{21}\selectfont}
@@ -66,7 +67,10 @@
 \setlength{\cellw}{0.5\paperwidth}
 \setlength{\cellh}{0.5\paperheight}
 
-% ---------- SIDE A: RULES ----------
+% small URL pinned to the bottom of a card side; #1 = a \footurl macro
+\newcommand{\cardfooter}[1]{\gap\vfill{\fontsize{5.5}{6.5}\selectfont\noindent\expandafter\url\expandafter{#1}}}
+
+% ---------- SIDE A: THOUSAND ----------
 \newcommand{\sideA}{%
   \cardtitle{Thousand (1000)}
   {\raggedright
@@ -76,7 +80,7 @@
     \item
       \textbf{Deal} 7 cards each to 3 players, clockwise from dealer's left, and 3 face down as a kitty (24-card deck: A, K, Q, J, 10, 9 per suit).
     \item
-      \textbf{Bid} clockwise from dealer's left: pass or raise, minimum 100, in 5 point increments.
+      \textbf{Bid} clockwise from dealer's left: pass or raise, minimum 100, in multiples of 5.
       Once you pass, you're out.
       If everyone passes, dealer bids 100.
     \item
@@ -90,7 +94,7 @@
       \textbf{Card rank and points} (120 total):\par\vspace{0.3\baselineskip}
       \hspace*{0.5em}\textbf{A}~11\qquad\textbf{10}~10\qquad\textbf{K}~4\qquad\textbf{Q}~3\qquad\textbf{J}~2\qquad\textbf{9}~0
     \item
-      \textbf{Marriage:} when you lead a Q and hold the K of the same suit, you may declare a new marriage.
+      \textbf{Marriage:} when you lead a Q and hold the K of the same suit, you declare a marriage.
       There is no trump until a marriage is declared. The suit declared becomes trump, and you score:\par\vspace{0.3\baselineskip}
       \hspace*{0.5em}\Heart~100\qquad\Diamondsuit~80\qquad\Club~60\qquad\Spade~40
     \item
@@ -100,54 +104,61 @@
     \item
       \textbf{Deal} passes clockwise.
   \end{enumerate}}
+
+  \cardfooter{\footurlA}
 }
 
-% ---------- SIDE B: SCORING ----------
+% ---------- SIDE B: MAKAO ----------
+% \actleft{...} = left column of a paired action line, padded to \actw so the
+% right-hand entries line up (\actw is set inside \sideB, at the body font size).
+\newlength{\actw}
+\newcommand{\actleft}[1]{\makebox[\actw][l]{#1}\qquad}
 \newcommand{\sideB}{%
   \raggedright
   \renewcommand{\gap}{\vspace{0.5\baselineskip}}% tighter than the rules side, so it all fits
   \cardtitle{Makao}
 
-   A shedding game for 2+ players, like uno or crazy eights, from Eastern Europe.
-   Pronounced mah-KAH-o \textipa{/ma"ka.O/}.
-   \gap
+  A shedding game for 2+ players from Eastern Europe, like Uno or Crazy Eights.
+  Pronounced mah-KAH-o \textipa{/ma"ka.O/}.
+  \gap
 
   \begin{enumerate}[leftmargin=1.5em,itemsep=0.5\baselineskip,topsep=0pt,parsep=0pt]
     \item
-      \textbf{Deal} 5 cards each to 2+ players, clockwise from dealer's left.
-      At the end place one card face up as the discard pile and the deck, face down, becomes the pickup pile.
-      A 52-card deck is used with jokers.
+      \textbf{Deal} 5 cards each, clockwise from dealer's left, from a 52-card deck plus jokers.
+      Turn one card face up to start the discard pile; the rest is placed face down as the pickup pile.
     \item
-      \textbf{First} to play is the loser of the previous round, else the youngest.
+      \textbf{First} to play is the previous round's loser, or the youngest player.
+      Any action of the first discard must be respected.
     \item
-      \textbf{Play} any card from your hand if it matches the suit or denomination (e.g. 5 or A) of the top of the discard pile.
-      If you have multiple cards of the same denomination you may play them in one turn (e.g. 3 aces).
-      If you can not play a card, pick one up from the pickup pile; you may immediately play it.
-    \item \textbf{Actions} of special cards on the next player:
-      2 - skip \& pick up 2
-      3 - skip \& pick up 3
-      4 - skip a turn
-      J - demand a non-action card (each player must place the named card) or demand nothing
-      Q - may be played on any suited non-action card and any card may be played on it.
-      KH/KS - next/previous picks up 5
-      A - name a new suit
-      Joker - may turn into any card as named by the player.
+      \textbf{Play} a card matching the top discard's suit or rank.
+      You may play several cards of the same rank at once (e.g. three 4s --- skip three turns).
+      If you can't play, draw one card; you may play it right away.
     \item
-      \textbf{Special cards} may be deflected. E.g. if I play the 2H the next player may play 3H and the player after takes 5 cards.
-      KH/KS may be blocked by KD/KC or deflected by the 2 or 3 of the same suit.
-      KS may not be defelected in a 3+ person game.
-      J may be deflected only if a demanded card has not been already played.
+      \textbf{Action cards} affect the next player:
+      \settowidth{\actw}{\textbf{2 / 3:} draw 2 / 3}%
+      \begin{itemize}[leftmargin=0pt,label={},itemsep=0pt,topsep=0.2\baselineskip,parsep=0pt]
+        \item \actleft{\textbf{2 / 3:} draw 2 / 3}\textbf{4:} skip a turn
+        \item \actleft{\textbf{A:} change the suit}\textbf{Joker:} is any card you name
+        \item \textbf{K\Heart{} / K\Spade:} next / previous player draws 5
+        \item \textbf{Q:} goes on any non-action card, and anything goes on it
+        \item \textbf{J:} pass or demand a non-action rank, which every player must play
+      \end{itemize}
     \item
-      \textbf{Makao} must be said when the second last card is played to alert others.
-      This may happen in the middle of placing multiple cards in one turn.
-      If someone notices you didn't say A penalty of 5 cards applies if the next person plays before you say it and someone notices.
+      \textbf{Deflect} an action card with a matching one; penalties add up:
+      \begin{itemize}[leftmargin=0pt,label={},itemsep=0pt,topsep=0.2\baselineskip,parsep=0pt]
+        \item \textbf{2 / 3:} e.g.\ 2\Heart{} on 3\Heart: next player draws 5 (or deflects further)
+        \item \textbf{K\Heart:} blocked by K\Diamondsuit{} / K\Club{}; deflected by 2\Heart, 3\Heart{} or K\Spade{}
+        \item \textbf{J:} deflected only before a demanded card has been played
+      \end{itemize}
     \item
-      \textbf{Winner} is the first to an empty hand.
-      You may say "po makale" (paw mah-KAH-leh \textipa{/pO ma"ka.lE/}) as a curtouisy.
+      \textbf{Say ``Makao''} when you're down to one card, even partway through a multi-card play.
+      If you forget, and someone notices when the next player plays, you draw 5.
+    \item
+      \textbf{Win} by emptying your hand first.
+      Saying ``po makale'' (paw mah-KAH-leh \textipa{/pO ma"ka.lE/}) is a courtesy.
   \end{enumerate}
 
-  \gap
-  \vfill{\fontsize{5.5}{6.5}\selectfont\noindent\expandafter\url\expandafter{\footurl}}
+  \cardfooter{\footurlB}
 }
 
 % ---------- layout ----------
@@ -174,15 +185,15 @@
 \newcommand{\oneup}[1]{%
   \noindent\vbox to \paperheight{\offinterlineskip\scalebox{2}{\cell{#1}}\vss}}
 
-% Page 1 = side A (Rules), page 2 = side B (Scoring); four copies each in 4-up mode.
+% Page 1 = side A (Thousand), page 2 = side B (Makao); four copies each in 4-up mode.
 \ifdefined\oneupmode
-  \newcommand{\thousandrules}{%
+  \newcommand{\cardrules}{%
     \oneup{\sideA}
     \newpage
     \oneup{\sideB}
   }
 \else
-  \newcommand{\thousandrules}{%
+  \newcommand{\cardrules}{%
     \fourup{\sideA}\cutlines
     \newpage
     \fourup{\sideB}

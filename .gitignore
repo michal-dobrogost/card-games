@@ -1,0 +1,8 @@
+# LaTeX intermediates (remove with each directory's ./clean.sh)
+*.aux
+*.log
+
+# Editor / OS clutter
+.DS_Store
+*.swp
+.swp
